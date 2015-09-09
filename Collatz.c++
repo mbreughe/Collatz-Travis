@@ -30,12 +30,36 @@ pair<int, int> collatz_read (const string& s) {
     return make_pair(i, j);}
 
 // ------------
+// cycle_length
+// ------------
+//
+int cycle_length (int n){
+    assert(n > 0);
+    int c = 1;
+    while (n > 1) {
+        if ((n % 2) == 0)
+            n = (n / 2);
+        else
+            n = (3 * n) + 1;
+        ++c;
+    }
+    return c;
+}
+// ------------
 // collatz_eval
 // ------------
 
 int collatz_eval (int i, int j) {
-    // <your code>
-    return 1;}
+    int min_val = min(i,j);
+    int max_val = max(i,j);
+
+    int max_cyc = 0;
+    for (int n=min_val; n <= max_val; ++n){
+        int cyc = cycle_length(n);
+        max_cyc = max(max_cyc, cyc);
+    }
+    return max_cyc;
+}
 
 // -------------
 // collatz_print
