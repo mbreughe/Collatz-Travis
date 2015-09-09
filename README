@@ -1,0 +1,2 @@
+note: SphereCollatz.c++ is excluded from the makefile.
+It is used for Sphere Online Judge
